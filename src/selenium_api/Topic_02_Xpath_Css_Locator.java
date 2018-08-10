@@ -19,7 +19,7 @@ public class Topic_02_Xpath_Css_Locator {
 	  //Partial linktext
 	  //tagname
 	  //Xpath
-	  //Css selector
+	  //Css selector 
   }
   
   @Test
