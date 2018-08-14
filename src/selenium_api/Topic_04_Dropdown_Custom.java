@@ -37,7 +37,7 @@ public class Topic_04_Dropdown_Custom {
 	   //Angular
 	   driver.get("https://material.angular.io/components/select/examples");
 	   driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	   driver.manage().window().maximize();
+	   //driver.manage().window().maximize();
 	   
 	   selectCustomDropdown("//mat-select[@placeholder='Favorite food']", "//mat-option/span", "Pizza");
 	   Assert.assertTrue(driver.findElement(By.xpath("//div[@class='mat-select-value']//span[text()='Pizza']")).isDisplayed());
@@ -63,29 +63,26 @@ public class Topic_04_Dropdown_Custom {
 	   
 	   
 	   //jquery edittable
-	   driver.get("http://indrimuska.github.io/jquery-editable-select/");
-	   driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	   driver.manage().window().maximize();
-  
-	   selectCustomDropdown("//div[@id='default-place']/input", "//div[@id='basic-place']//ul[@class='es-list']/li", "Volkswagen");
-	   Assert.assertTrue(driver.findElement(By.xpath("//div[@id='default-place']/input")).isDisplayed());
+	   //driver.get("http://indrimuska.github.io/jquery-editable-select/");
+	   //driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
+	   //driver.manage().window().maximize();
+	   //selectCustomDropdown("//div[@id='default-place']/input", "//div[@id='basic-place']//ul[@class='es-list']/li", "Volkswagen");
+	   //Assert.assertTrue(driver.findElement(By.xpath("//div[@id='default-place']/input")).isDisplayed());
 	   
 	   
 	   //multiple select
-	   driver.get("http://wenzhixin.net.cn/p/multiple-select/docs/");
-	   driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	   driver.manage().window().maximize();
-	   
-	   selectCustomDropdown("//p[@id='e1_t']/div", "//p[@id='e1_t']//li", "November");
-	   Assert.assertTrue(driver.findElement(By.xpath("//p[@id=\"e1_t\"]//label/span[text()=\"November\"]")).isDisplayed());
+	   //driver.get("http://wenzhixin.net.cn/p/multiple-select/docs/");
+	   //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	   //driver.manage().window().maximize();
+	   //selectCustomDropdown("//p[@id='e1_t']/div", "//p[@id='e1_t']//li", "November");
+	   //Assert.assertTrue(driver.findElement(By.xpath("//p[@id=\"e1_t\"]//label/span[text()=\"November\"]")).isDisplayed());
 	   
 	   //semanticUI
-	   driver.get("https://semantic-ui.com/modules/dropdown.html");
-	   driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
-	   driver.manage().window().maximize();
-	   
-	   selectCustomDropdown("//div[@class='dropdown example']//div[text()='Select Country']","//div[@class='menu transition visible']//i","Turkey");
-	   Assert.assertTrue(driver.findElement(By.xpath("//div[@class='ui fluid search selection dropdown']/div[text()='Turkey']")).isDisplayed());
+	   //driver.get("https://semantic-ui.com/modules/dropdown.html");
+	   //driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+	   //driver.manage().window().maximize();
+	   //selectCustomDropdown("//div[@class='dropdown example']//div[text()='Select Country']","//div[@class='menu transition visible']//i","Turkey");
+	   //Assert.assertTrue(driver.findElement(By.xpath("//div[@class='ui fluid search selection dropdown']/div[text()='Turkey']")).isDisplayed());
   }
   @BeforeClass
   public void beforeClass() {
@@ -94,14 +91,20 @@ public class Topic_04_Dropdown_Custom {
   }
 
   public void selectCustomDropdown(String dropdown, String listItems, String valueItem) throws Exception {
+	  Thread.sleep(3000);
 	  WebElement dropdownElement = driver.findElement(By.xpath(dropdown));
-	  ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdownElement);dropdownElement.click();
+	  Thread.sleep(3000);
+	  //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdownElement);
+	  dropdownElement.click();
+	  
+	  //Lay tat ca item trong custom dropdown
 	  List<WebElement> allItems = driver.findElements(By.xpath(listItems));
 	  wait.until(ExpectedConditions.visibilityOfAllElements(allItems));
 	  Thread.sleep(3000);
 	  for (WebElement item : allItems) {
 		System.out.println(item.getText());
 			if (item.getText().trim().equals(valueItem)) {
+				//Scroll to element use javascript executor
 				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", item);
 
 				Thread.sleep(3000);
