@@ -54,7 +54,7 @@ public class Topic_06_UserInterActions {
 		driver.get("http://jqueryui.com/resources/demos/selectable/display-grid.html");
 		List<WebElement> Selectable = driver.findElements(By.xpath("//li[@class='ui-state-default ui-selectee']"));
 		
-		// click and hold mouse 
+		//click and hold mouse 
 		Actions action = new Actions(driver);
 //		action.clickAndHold(Selectable.get(0)).moveToElement(Selectable.get(3)).release().perform();
 		
