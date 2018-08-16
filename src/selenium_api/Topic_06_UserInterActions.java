@@ -66,7 +66,7 @@ public class Topic_06_UserInterActions {
 		Selectable.get(5).click();
 		Selectable.get(8).click();
 		
-		//nha phim control ra 
+		//nha phim control
 		action.keyUp(Keys.CONTROL).build().perform();
 				
 		//verify 
